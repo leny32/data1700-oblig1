@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            padding: 5px;
+            border: 1px solid black;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        .form label {
+            margin-top: 10px;
+        }
+
+        span[role="alert"] {
+            display: none;
+            color: red;
+        }
+
+        span[role="alert"].visible {
+            display: block;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bestilling av kinobiletter</h1>
+    <form class="form" onsubmit="validerInput(); return false;">
+        <label for="film">Velg film:</label>
+        <select name="film" id="film">
+            <option disabled hidden selected value>Velg film her</option>
+            <option value="Dark Windows">Dark Windows</option>
+            <option value="Dream Scenario">Dream Scenario</option>
+            <option value="Poor things">Poor Things</option>
+            <option value="Vermin">Vermin</option>
+        </select>
+        <span role="alert" id="filmError" aria-hidden="true">
+            Film må velges
+        </span>
+
+        <label for="antall">Antall</label>
+        <input type="number" name="antall" id="antall" min="1" max="10">
+        <span role="alert" id="antallError" aria-hidden="true">
+            Antall må være mellom 1 og 10
+        </span>
+
+
+        <label for="fornavn">Fornavn</label>
+        <input type="text" name="fornavn" id="fornavn">
+        <span role="alert" id="fornavnError" aria-hidden="true">
+            Fornavn må fylles ut
+        </span>
+
+
+        <label for="etternavn">Etternavn</label>
+        <input type="text" name="etternavn" id="etternavn">
+        <span role="alert" id="etternavnError" aria-hidden="true">
+            Etternavn må fylles ut
+        </span>
+
+        <label for="telefon">Telefonnr</label>
+        <input type="tel" name="telefon" id="telefon">
+        <span role="alert" id="telefonError" aria-hidden="true">
+            Telefonnummer må fylles ut, og være 8 siffer
+        </span>
+
+        <label for="epost">Epost</label>
+        <input type="email" name="epost" id="epost" value="de@co.co">
+        <span role="alert" id="epostError" aria-hidden="true">
+            Epost må fylles ut
+        </span>
+
+        <button type="submit">Kjøp billett</button>
+    </form>
+
+    <section>
+        <h2>Alle billetter</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Film</th>
+                    <th>Antall</th>
+                    <th>Pris</th>
+                    <th>Navn</th>
+                    <th>Telefon</th>
+                    <th>Epost</th>
+                </tr>
+            </thead>
+            <tbody id="billetter">
+                <!-- Her kommer billettene -->
+            </tbody>
+        </table>
+        <button onclick="slettAlleBilletter()">Slett alle billetter</button>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
